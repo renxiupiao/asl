@@ -1,0 +1,69 @@
+	
+Open in app or online
+Zero to One Knowledge: Comparing zkSync's Era and Polygon's zkEVM
+How do ZKEVMs work? What are the different proving mechanisms? What is the outlook for the two earliest ZKEVMs on the market?
+APR 20
+ 
+
+
+
+SHARE
+ 
+Dear Bankless Nation 🏴,
+
+In this edition of the DeFi Download, we’re giving you the rundown on zkSync Era and Polygon’s zkEVM. We’re answering the following questions: How do ZKEVMs work? What are the different proving mechanisms? What is the outlook for the two earliest ZKEVMs on the market?
+
+Afterwards we dig into the MEV-Boost hack and give you the latest project releases and Twitter takes.
+
+This is the DeFi Download ⚡️
+
+Contributors: BanklessDAO Writers Guild (Austin Foss, Jake and Stake)
+
+
+From ‘Castle Ethereum,’ by Perchy
+This is the official newsletter of BanklessDAO. To unsubscribe, edit your settings.
+
+Subscribe
+
+Zero to One Knowledge: Comparing zkSync's Era and Polygon's zkEVM
+Author: Jake and Stake
+
+
+What are ZKEVMs?
+ZKEVMs are rollups that strive to create a platform as close to the EVM as possible. They increase transaction throughput and reduce transaction costs by moving computation off-chain and using Ethereum as a data availability layer. 
+
+Basically, transactions are executed off chain by rollup operators called “sequencers”. These sequencers generate proofs to show the transactions are correct and publish that proof to Ethereum. Publishing transactions to Ethereum is costly, but instead of publishing the entire collection of transactions, data and gas is saved by publishing a small proof.
+
+This can be analogized to data compression. Imagine you have a library of songs you want to send to someone. Instead of copy and pasting your folder, you can compress it into a much smaller zip file and send that instead.
+
+The compressed data submitted to Ethereum is a validity proof. This short cryptographic proof allows anyone to verify the correctness of the computation without needing all the transaction data. In fact, it’s better than our zip file analogy because proofs are the same size regardless of the number of transactions—O(1).
+
+A ZK proving system is composed of two parts: on-chain contracts and an off-chain virtual machine.
+
+On-chain contracts store blocks, track deposits, and monitor state updates. Particularly the verifier contract which validates zero-knowledge proofs submitted by the rollup’s sequencers. And an off-chain virtual machine that users submit transactions to. Rollup operators bundle these transactions and generate the validity proof that is submitted to the on-chain Ethereum contracts.
+
+zkSync and Polygon have been in the news recently regarding their newly launched ZKEVMs (or at least their alpha versions). But how do they compare?
+
+Similarities
+Both are ZKEVMs in that they generate proofs of user transactions that are published to Ethereum L1. They mimic the transaction execution environment of L1 Ethereum. A ZK Rollup (ZKRU) is composed of three different parts:
+
+An off-chain sequencer that batches user transactions and publishes them to L1
+
+An on-chain contract that verifies the proof’s correctness
+
+An on-chain data store (usually Ethereum L1 smart contract)
+
+Like optimistic rollups, users bridge their assets to the rollup contract by depositing their funds or using a third party bridge. Once these funds are settled in the contract, users are able to connect to the sequencer and generate transactions.
+
+Users and developers submit transactions to the sequencer which bundles them and generates a proof that is verified by the on-chain contract for correctness. If the verifier contract doesn’t approve the proof, the state is not changed and the bundle is rejected.
+
+Both are considered volitions. Volitions allow users to choose whether or not to publish data on Ethereum L1. zkSync has a data availability chain called zkPorter and Polygon has a data availability chain called Avail. The trade off is cost. If users want guarantees that their transaction inherits the security guarantees of Ethereum, they will volunteer to publish it to L1 at a higher cost. The aforementioned data availability layers have fewer security guarantees but cheaper costs.
+
+A strategy that users might utilize is to publish their transactions to L1 every so often to create checkpoints, saving their transaction history in more permanent storage. This system can be analogized to general computing: committing transactions to Ethereum L1 is like “saving to disk” for long term storage and the data availability chains function as a “Memory Cache”.
+
+Differences
+Different ZKEVM schemes have different trade-offs. The more expressive and performant your computation, the more complex the required ZK system. 
+
+ZKEVMs already exist, but are not general enough for EVM equivalence or are too slow to be used for production systems. Note that specialized hardware can increase the speed, but it also increases barriers to entry thus hurting decentralization.
+
+Vitalik has outlined a method for categorizing ZKEVMs:
