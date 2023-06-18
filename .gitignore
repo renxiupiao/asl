@@ -1,0 +1,43 @@
+# Created by IDE
+.idea/
+*.iml
+.DS_Store
+.vscode
+*.sw*
+
+# Created by Builder
+web-entry
+test/build
+weex_tmp
+coverage
+dist
+*.js.gz
+
+# Node
+logs
+*.log
+npm-debug.log*
+node_modules
+.npm
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+android/playground/app/gradlew
+android/playground/app/gradlew.bat
+android/playground/app/gradle/wrapper/gradle-wrapper.jar
+android/playground/app/gradle/wrapper/gradle-wrapper.properties
+android/sdk/.externalNativeBuild/ndkBuild/
+android/HeronAndroid/.externalNativeBuild/
+
+# release
+apache-weex-incubating-*
+apache_release_temp
+RELEASE_NOTE.md
+RELEASE_AUDIT.LOG
+
+android/commons/bin/
+android/playground/app/bin/
+weex_core/test/out/
