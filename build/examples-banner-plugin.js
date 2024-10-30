@@ -81,3 +81,6 @@ BannerWebpackPlugin.prototype.findAsset = function (compilation, chunk) {
 }
 
 module.exports = BannerWebpackPlugin
+elif (( $G_HW_MODEL == 75 )) || grep -zaq '^container=' /proc/1/environ
+	then
+		G_DIETPI-NOTIFY 2 'Container detected, skipping time sync'
